@@ -5,6 +5,11 @@ class Tmexclude < Formula
   sha256 "6df042debdb91e85bc48ad0f928037edff7b4a3c37ba36243a9897e4ad933ff9"
   license "MIT"
 
+  bottle do
+    root_url "https://github.com/PhotonQuantum/homebrew-tap/releases/download/tmexclude-0.1.0-alpha.1"
+    sha256 cellar: :any_skip_relocation, big_sur: "fde4e7fbf2b8b490bb81b9b6521dd8c5b9939871e16ffc71c83eb63c5667b6a6"
+  end
+
   depends_on "rust" => :build
 
   def install
