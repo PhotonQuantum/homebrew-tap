@@ -1,1 +1,23 @@
-<html><body>You are being <a href="https://objects.githubusercontent.com/github-production-release-asset-2e65be/433487234/2326b987-8c18-4a89-b82f-3c163a4b9828?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220123%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20220123T150341Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=6181e5fdcb927ee92853aca16777adcdb699c4980a2c1a0b8e9498faa51b207b&amp;X-Amz-SignedHeaders=host&amp;actor_id=0&amp;key_id=0&amp;repo_id=433487234&amp;response-content-disposition=attachment%3B%20filename%3Dtmexclude.rb&amp;response-content-type=application%2Foctet-stream">redirected</a>.</body></html>
+class Tmexclude < Formula
+  desc "Exclude undesired files (node_modules, target, etc) from your TimeMachine backup"
+  homepage "https://github.com/PhotonQuantum/tmexclude"
+  url "https://github.com/PhotonQuantum/tmexclude/releases/download/v0.1.0-alpha.2.post.2/tmexclude-0.1.0-alpha.2.post.2.tar.gz"
+  sha256 "2ceae777bb095b231ef3f65a7871a158b559592c32a22ba3d3410bbf8e9b871b"
+  license "MIT"
+
+  def install
+    bin.install "tmexclude"
+    bash_completion.install "completion/tmexclude.bash"
+    zsh_completion.install "completion/tmexclude.fish"
+    fish_completion.install "completion/_tmexclude"
+    inreplace "launch.plist" do |s|
+      s.gsub! "LABEL", "#{plist_name}"
+      s.gsub! "SELF_PATH", "#{bin}/tmexclude"
+    end
+    prefix.install_symlink "launch.plist" => "#{plist_name}.plist"
+  end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/tmexclude --version")
+  end
+end
