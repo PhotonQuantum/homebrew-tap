@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Checkout 🛎️
-      - run: curl ${{ github.event.inputs.file_url }} > Formula/${{ github.event.inputs.formula }}.rb
+      - run: curl -L ${{ github.event.inputs.file_url }} > Formula/${{ github.event.inputs.formula }}.rb
         name: Retrieve formula
       - uses: EndBug/add-and-commit@v8
         name: Commit changes & push
