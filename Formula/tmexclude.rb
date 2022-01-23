@@ -1,8 +1,8 @@
 class Tmexclude < Formula
   desc "Exclude undesired files (node_modules, target, etc) from your TimeMachine backup"
   homepage "https://github.com/PhotonQuantum/tmexclude"
-  url "https://github.com/PhotonQuantum/tmexclude/releases/download/v0.1.0-alpha.2.post.4/tmexclude-0.1.0-alpha.2.post.4.tar.gz"
-  sha256 "e90a70689cfb3367913d8f92db25040e535d738085a38972bd92d4c6b49d6b63"
+  url "https://github.com/PhotonQuantum/tmexclude/releases/download/v0.1.0-beta.1/tmexclude-0.1.0-beta.1.tar.gz"
+  sha256 "bc889be1162bc7f4f3c3b4b155a17127e4fcff3bfa9510f8e5ca63ef475d6ffc"
   license "MIT"
 
   def install
